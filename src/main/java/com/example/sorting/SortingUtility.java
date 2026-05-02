@@ -22,7 +22,34 @@ public class SortingUtility {
 
     public static <T extends Comparable<T>> void cocktailShakerSort(T[] a) {
 
-        // TODO implement Cocktail Shaker Sort here
+        boolean swapped;
+
+        do {
+            swapped = false;
+
+            // Sweep left-to-right, swapping adjacent out-of-order elements.
+            for (int i = 0; i < a.length - 1; i++) {
+                if (a[i].compareTo(a[i + 1]) > 0) {
+                    swap(a, i, i + 1);
+                    swapped = true;
+                }
+            }
+
+            // If no swaps happened, the array is already sorted.
+            if (!swapped) {
+                break;
+            }
+
+            swapped = false;
+
+            // Sweep right-to-left, again swapping adjacent out-of-order elements.
+            for (int i = a.length - 2; i >= 0; i--) {
+                if (a[i].compareTo(a[i + 1]) > 0) {
+                    swap(a, i, i + 1);
+                    swapped = true;
+                }
+            }
+        } while (swapped);
     }
 
 

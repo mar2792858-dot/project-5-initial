@@ -22,3 +22,48 @@ Further Considerations
 SortingUtilityTest.java is empty; Option A: compile only, Option B: add focused gnome-sort tests first.
 Guard against the common pos == 0 boundary error noted in docs/AI_PROMPTING_GUIDE.md.
 Draft for review: if desired, I can refine this into a stricter validation checklist for IntelliJ on Windows and Maven.
+
+Second Prompt: 
+
+"Please implement cocktailShakerSort with the same guidelines, ensuring the variable names match exactly, keeping generics so it can handle arrays of Comparable objects, using existing swap(), and adding comments The pseudocode is as follows:
+procedure cocktailShakerSort(a : list of sortable items) is
+do
+swapped := false
+for each i in 0 to length(a) − 1 do:
+if a[i] > a[i + 1] then
+swap(a[i], a[i + 1])
+swapped := true
+end if
+end for
+if not swapped then
+break do-while loop
+end if
+swapped := false
+for each i in length(a) − 1 to 0 do:
+if a[i] > a[i + 1] then
+swap(a[i], a[i + 1])
+swapped := true
+end if
+end for
+while swapped
+end procedure"
+
+Response: 
+
+"Plan: Add cocktailShakerSort
+Implement cocktailShakerSort only in SortingUtility.java, mirroring the README pseudocode while preserving the exact names a, swapped, and i. Keep the existing generic Comparable signature, reuse swap(), add short clarifying comments, and translate the pseudocode’s pass bounds to safe Java indices so no a[i + 1] access can go out of range.
+Steps
+Review cocktailShakerSort requirements in README.md and SortingUtility.cocktailShakerSort.
+Replace the TODO in SortingUtility.cocktailShakerSort with a do-while structure using swapped.
+Use forward and backward passes with safe i bounds, still comparing adjacent a elements.
+Call swap() for each out-of-order pair and add brief comments for each pass and early break.
+Validate SortingUtility.java for compiler/IDE errors, then run Maven from pom.xml.
+Further Considerations
+For pseudocode fidelity, use Option A: exact pass logic with corrected bounds; Option B: add shrinking pass limits only if allowed.
+Arrays of length 0 or 1 should exit naturally without extra complexity if loop bounds are chosen carefully.
+If desired, this draft can be refined into a stricter Windows/IntelliJ validation checklist."
+
+
+Note: For the responses, I included the AI plan. It also provided
+an Acknowledgement of what it updated in the code, but I found
+it to be wordy and redundant to what I requested, so I did not include it in the response.
