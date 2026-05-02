@@ -7,3 +7,4 @@ reaches the beginning of the array. Then the gnome moves forward again and repea
 sorting the array from least to greatest until the gnome is able to move forward completely
 through the array because every element at current position is greater than or equal
 to the previous.
+

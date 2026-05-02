@@ -5,7 +5,18 @@ public class SortingUtility {
 
     public static <T extends Comparable<T>> void gnomeSort(T[] a) {
 
-        // TODO implement Gnome Sort here
+        int pos = 0;
+
+        while (pos < a.length) {
+            // Move forward when at the start of the array or already in sorted order.
+            if (pos == 0 || a[pos].compareTo(a[pos - 1]) >= 0) {
+                pos = pos + 1;
+            } else {
+                // Swap out-of-order neighbors, then step backward to re-check.
+                swap(a, pos, pos - 1);
+                pos = pos - 1;
+            }
+        }
     }
 
 
