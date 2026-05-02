@@ -1,5 +1,8 @@
 package com.example.sorting;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class SortingUtility {
 
 
@@ -54,8 +57,27 @@ public class SortingUtility {
 
 
     public static <T extends Comparable<T>> void shellSort(T[] a) {
+        // Ciura gap sequence stored as an ArrayList, as required by the pseudocode.
+        ArrayList<Integer> gaps = new ArrayList<>(Arrays.asList(701, 301, 132, 57, 23, 10, 4, 1));
+        int n = a.length;
 
-        // TODO implement Shell Sort here
+        // Start with the largest gap and work down to a gap of 1.
+        for (int gap : gaps) {
+            // Do a gapped insertion sort for each element in the current gap group.
+            for (int i = gap; i < n; i += 1) {
+                // Save a[i] in temp and create a hole at position i.
+                T temp = a[i];
+                int j;
+
+                // Shift earlier gap-sorted elements up until temp belongs at index j.
+                for (j = i; (j >= gap) && (a[j - gap].compareTo(temp) > 0); j -= gap) {
+                    a[j] = a[j - gap];
+                }
+
+                // Put temp (the original a[i]) in its correct location.
+                a[j] = temp;
+            }
+        }
     }
 
     private static <T extends Comparable<T>> void swap(T[] data, int index1, int index2) {

@@ -18,3 +18,19 @@ by asking if the current element is greater than the next and swapping if so.
 Once it gets to the end of the array it then compares the pairs from the back of the array to the
 front, moving the smaller elements to the front faster than traditional bubble sort.
 
+My understanding of shellSort algorithm is that you compare elements a
+that are a fixed distance apart and swap them if needed, so they are smaller 
+to larger (or least to greatest). The next pass you reduce the distance until the distance is 1 and you compare elements that are neighbors
+.In our algorithm the distances are defined in the gaps array. This process
+has a possibility of helping move smaller elements at the end of the array to the front much faster than a regular insertion sort.
+
+The swaps were handled well, in the cocktailShakerSort and gnomeSort algorithms, it used the existing swap method, but in the Shell sort it did not.
+The time comparison results were as follows:
+
+Seconds       %       Task name
+----------------------------------------
+0.2078301     41%     Gnome Sort
+0.2888057     58%     Cocktail Shaker Sort
+0.0052731     01%     Shell Sort
+
+The shell sort was by far the quickest. 

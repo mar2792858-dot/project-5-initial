@@ -63,7 +63,49 @@ For pseudocode fidelity, use Option A: exact pass logic with corrected bounds; O
 Arrays of length 0 or 1 should exit naturally without extra complexity if loop bounds are chosen carefully.
 If desired, this draft can be refined into a stricter Windows/IntelliJ validation checklist."
 
+Prompt 3: 
+
+"No thank you. Can you please write the algorithm for shellSort()? Again, please make sure variable names match the pseudocode exactly, that generic implementation works with Comparable objects, and include comments for clarity. Create gaps as an ArrayList and follow the pseudocode:
+Sort an array a[0...n-1].
+gaps = [701, 301, 132, 57, 23, 10, 4, 1] # Ciura gap sequence
+n = a[] length
+Start with the largest gap and work down to a gap of 1
+foreach (gap in gaps)
+{
+# Do a gapped insertion sort for every elements in gaps
+for (i = gap; i < n; i += 1)
+{
+# save a[i] in temp and make a hole at position i
+temp = a[i]
+# shift earlier gap-sorted elements up until the correct location for a[i] is found
+for (j = i; (j >= gap) && (a[j - gap] > temp); j -= gap)
+{
+a[j] = a[j - gap]
+}
+# put temp (the original a[i]) in its correct location
+a[j] = temp
+}
+}"
+
+Response: 
+
+"Plan: Add Shell Sort with Required Naming
+Implement shellSort in SortingUtility by mirroring the README pseudocode exactly, preserving variable names gaps, n, i, j, temp, and a. Use an ArrayList for the Ciura gap sequence, keep generic Comparable behavior via compareTo, and add concise comments aligned to each pseudocode block. Validate through pseudocode-name checks and project build/test commands.
+Steps
+Review Shell pseudocode in README.md and target shellSort in SortingUtility.java.
+Implement shellSort(T[] a) using ArrayList<Integer> gaps and int n = a.length.
+Translate gapped insertion loops with exact variables i, j, temp, preserving pseudocode structure.
+Use compareTo for a[j - gap] versus temp, keeping generic Comparable support intact.
+Add brief pseudocode-aligned comments, then validate names/logic, run IDE inspections, and execute mvn test.
+Further Considerations
+Should validation be compile-focused only, or include adding SortingUtilityTest.java shell-sort cases?
+Should docs/AI_INTERACTION_LOG.md also be updated with shell-sort prompt and verification notes?
+Confirm this draft plan, or request stricter validation checklist details."
+
+I accepted this code as is, the shellSort method is generic but the gaps are fixed integers and are a specific Ciura sequence, so this made sense. 
 
 Note: For the responses, I included the AI plan. It also provided
 an Acknowledgement of what it updated in the code, but I found
 it to be wordy and redundant to what I requested, so I did not include it in the response.
+I also verified each algorithms variables by manually comparing them to the pseudocode.
+I did not need to update the generated algorithm codes as of yet. At this time I have been successfully able to run the tests in the SortingDriver class.
