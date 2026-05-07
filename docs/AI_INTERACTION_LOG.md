@@ -109,3 +109,38 @@ an Acknowledgement of what it updated in the code, but I found
 it to be wordy and redundant to what I requested, so I did not include it in the response.
 I also verified each algorithms variables by manually comparing them to the pseudocode.
 I did not need to update the generated algorithm codes as of yet. At this time I have been successfully able to run the tests in the SortingDriver class.
+
+Testing prompts:
+
+Prompt 1: "Lets start generating comprehensive unit tests in the SortingUtilityTest class. Please cover both edge cases and typical cases. The test categories should include:
+Empty array: []
+Single element: [5]
+Already sorted: [1, 2, 3, 4, 5]
+Reverse sorted: [5, 4, 3, 2, 1]
+Duplicates: [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
+All same elements: [5, 5, 5, 5, 5]
+Two elements (swapped): [2, 1]
+Two elements (sorted): [1, 2]
+Random order: [64, 34, 25, 12, 22, 11, 90]
+String arrays: Test with Comparable objects other than integers (e.g., ["zebra", "apple", "mango", "banana"])
+
+Please handle both Integer and String test cases. Start with tests related to the Gnome Sort algorithm and be sure to test that pos variable handles edge cases correcly (0 position backtracking)."
+
+Changes made: I had to update a misspelling of 'gneme...' to 'gnome'
+ in every test for gnomeSorting tests. It proceeded to 
+build tests for the other two algorithms. 
+
+Reviewed the generated tests and they look correct but possibly not the most efficient.
+
+Follow up prompt: It looks like the same arrays are used for the testing of each algorithm. Is there a way to make this more efficient? Or is this the most efficient way to write the tests and maintain correctness?
+
+Response summary: The tests are indeed correct,
+there were suggestions to parameterize and data driven tests while
+keeping the edge cases. I reviewed and accepted these changes and it did reduce 
+duplication and still seemed correct. I think it improved readability in making lists out of
+the tests.
+
+Additional prompt: Final tests asking if there are any 
+additional edge cases that are recommended. 
+
+I had it add a test to test a mix of negative integers and zero.
