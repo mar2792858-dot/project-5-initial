@@ -32,5 +32,3 @@ Seconds       %       Task name
 0.2078301     41%     Gnome Sort
 0.2888057     58%     Cocktail Shaker Sort
 0.0052731     01%     Shell Sort
-
-The shell sort was by far the quickest. 
